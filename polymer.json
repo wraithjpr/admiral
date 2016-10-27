@@ -1,0 +1,17 @@
+{
+  "entrypoint": "index.html",
+  "shell": "src/admiral-app.html",
+  "fragments": [
+    "src/lazy-resources.html"
+  ],
+  "sourceGlobs": [
+   "src/**/*",
+   "data/**/*",
+   "images/**/*",
+   "bower.json"
+  ],
+  "includeDependencies": [
+    "manifest.json",
+    "bower_components/webcomponentsjs/webcomponents-lite.min.js"
+  ]
+}

@@ -1,0 +1,29 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<dom-module id="admiral-app">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h2>Hello [[prop1]]</h2>
+  </template>
+
+  <script>
+    'use strict';
+    
+    Polymer({
+
+      is: 'admiral-app',
+
+      properties: {
+        prop1: {
+          type: String,
+          value: 'admiral-app'
+        }
+      }
+
+    });
+  </script>
+</dom-module>
