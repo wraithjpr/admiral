@@ -1,0 +1,33 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="admiral-onboard">
+  <template>
+    <style include="shared-styles">
+      :host {
+        background-color: var(--app-background-color);
+        color: var(--app-text-color);
+      }
+    </style>
+
+    <h2>Getting Started</h2>
+    <div>
+      <p>Hi, can I help you make a better world today?</p>
+      <p>Start quickly, choose a buddy below</p>
+    </div>
+    <ul>
+      <li>Bob gives us a sustainable future choosing products with a low impact on the planet.</li>
+      <li>Kate will create a fairer world buying things where workers have fair pay and safe, healthy working conditions.</li>
+      <li>Tracey cares for her community, family and friends buying local.</li>
+      <li>Jamil wants to help everywhere. He spends to the daily theme; companies that pay taxes; getting money to the poorest.</li>
+    </ul>
+  </template>
+
+  <script>
+    'use strict';
+
+    Polymer({
+      is: 'admiral-onboard'
+    });
+  </script>
+</dom-module>

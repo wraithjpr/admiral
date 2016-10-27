@@ -2,30 +2,30 @@
 
 <html>
   <head>
-    <title>admiral-app test</title>
+    <title>admiral-not-found test</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
     <script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
     <script src="../bower_components/web-component-tester/browser.js"></script>
 
-    <link rel="import" href="../src/admiral-app.html">
+    <link rel="import" href="../src/admiral-not-found.html">
   </head>
   <body>
 
     <test-fixture id="basic">
       <template>
-        <admiral-app></admiral-app>
+        <admiral-not-found></admiral-not-found>
       </template>
     </test-fixture>
 
     <script>
       'use strict';
 
-      suite('admiral-app', function () {
+      suite('admiral-not-found', function () {
         test('instantiating the element works', function () {
           var element = fixture('basic');
 
-          assert.equal(element.is, 'admiral-app');
+          assert.equal(element.is, 'admiral-not-found');
         });
       });
     </script>

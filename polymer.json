@@ -2,6 +2,8 @@
   "entrypoint": "index.html",
   "shell": "src/admiral-app.html",
   "fragments": [
+    "src/admiral-onboard.html",
+    "src/admiral-not-found.html",
     "src/lazy-resources.html"
   ],
   "sourceGlobs": [

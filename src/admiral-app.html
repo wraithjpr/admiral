@@ -1,5 +1,12 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 
+<link rel="import" href="../bower_components/app-layout/helpers/helpers.html">
+
+<link rel="import" href="../bower_components/app-route/app-location.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
+
+<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+
 <dom-module id="admiral-app">
   <template>
     <style>
@@ -7,20 +14,90 @@
         display: block;
       }
     </style>
-    <h2>Hello [[prop1]]</h2>
+
+    <app-location route="{{route}}"></app-location>
+    <app-route
+        route="{{route}}"
+        pattern="/:page"
+        data="{{routeData}}"
+        tail="{{subroute}}"></app-route>
+
+    <iron-pages
+        selected="[[page]]"
+        attr-for-selected="name"
+        fallback-selection="not-found">
+      <admiral-onboard name="onboard"></admiral-onboard>
+      <admiral-not-found name="not-found"></admiral-not-found>
+    </iron-pages>
+
   </template>
 
   <script>
     'use strict';
-    
+
     Polymer({
 
       is: 'admiral-app',
 
       properties: {
-        prop1: {
+        page: {
           type: String,
-          value: 'admiral-app'
+          reflectToAttribute: true,
+          observer: '_pageChanged'
+        }
+      },
+
+      observers: [
+        '_routePageChanged(routeData.page)'
+      ],
+
+      created: function () {
+        // Custom elements polyfill safe way to indicate an element has been upgraded.
+        this.removeAttribute('unresolved');
+      },
+
+      _ensureLazyLoaded: function () {
+        // load lazy resources after render and set `loadComplete` when done.
+        if (!this.loadComplete) {
+          Polymer.RenderStatus.afterNextRender(this, function () {
+            this.importHref(this.resolveUrl('lazy-resources.html'), function () { // eslint-disable-line no-invalid-this
+              this.loadComplete = true;                                           // eslint-disable-line no-invalid-this
+            });
+          });
+        }
+      },
+
+      _pageChanged: function (page) {
+        // Load page import on demand. Show not found page if fails
+        var pageFilename = '';
+
+        if (page) {
+          // pageFilename = `admiral-${page}.html`;
+          pageFilename = 'admiral-' + page + '.html';
+          this.importHref(this.resolveUrl(pageFilename), this._pageLoaded, this._showNotFound, true);
+        }
+      },
+
+      _pageLoaded: function () {
+        this._ensureLazyLoaded();
+      },
+
+      _routePageChanged: function (page) {
+        // Default to the onboarding page
+        this.set('page', page || 'onboard');
+        // Scroll to the top of the page on every *route* change. Use `Polymer.AppLayout.scroll`
+        // with `behavior: 'silent'` to disable header scroll effects during the scroll.
+        Polymer.AppLayout.scroll({
+          top: 0,
+          behavior: 'silent'
+        });
+        // Close the drawer - in case the *route* change came from a link in the drawer.
+        this.drawerOpened = false;
+      },
+
+      _showNotFound: function () {
+        if (this.page !== 'not-found') {
+          this.set('page', 'not-found');
         }
       }
 
