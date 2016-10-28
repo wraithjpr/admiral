@@ -1,17 +1,62 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 
+<link rel="import" href="../bower_components/app-layout/app-drawer/app-drawer.html">
+<link rel="import" href="../bower_components/app-layout/app-drawer-layout/app-drawer-layout.html">
+<link rel="import" href="../bower_components/app-layout/app-header/app-header.html">
+<link rel="import" href="../bower_components/app-layout/app-header-layout/app-header-layout.html">
+<link rel="import" href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
+<link rel="import" href="../bower_components/app-layout/app-toolbar/app-toolbar.html">
 <link rel="import" href="../bower_components/app-layout/helpers/helpers.html">
 
 <link rel="import" href="../bower_components/app-route/app-location.html">
 <link rel="import" href="../bower_components/app-route/app-route.html">
 
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../bower_components/iron-selector/iron-selector.html">
+
+<link rel="import" href="shared-styles.html">
 
 <dom-module id="admiral-app">
   <template>
-    <style>
+    <style include="shared-styles">
       :host {
         display: block;
+      }
+
+      app-toolbar {
+        background-color: var(--app-primary-color);
+        color: var(--app-primary-text-color);
+      }
+
+      .drawer-list {
+        margin: 0 20px;
+      }
+
+      .drawer-list a {
+        display: block;
+        padding: 0 16px;
+        line-height: 40px;
+        text-decoration: none;
+        color: var(--app-secondary-color);
+      }
+
+      .drawer-list a.iron-selected {
+        color: black;
+        font-weight: bold;
+      }
+
+      .logo {
+        text-align: center;
+      }
+
+      .logo a {
+        font-size: 16px;
+        font-weight: 600;
+        letter-spacing: 0.3em;
+        text-decoration: none;
+        /* required for IE 11, so this <a> can receive pointer events */
+        display: inline-block;
+        pointer-events: auto;
       }
     </style>
 
@@ -22,13 +67,29 @@
         data="{{routeData}}"
         tail="{{subroute}}"></app-route>
 
-    <iron-pages
-        selected="[[page]]"
-        attr-for-selected="name"
-        fallback-selection="not-found">
-      <admiral-onboard name="onboard"></admiral-onboard>
-      <admiral-not-found name="not-found"></admiral-not-found>
-    </iron-pages>
+    <app-drawer-layout fullbleed>
+      <app-drawer opened="{{drawerOpened}}" swipe-open tabindex="0">
+        <iron-selector class="drawer-list" selected="[[page]]" attr-for-selected="name" role="navigation">
+          <a name="onboard" href="/onboard">Getting Started</a>
+        </iron-selector>
+      </app-drawer>
+      <app-header-layout has-scrolling-region>
+        <app-header>
+          <app-toolbar>
+            <paper-icon-button icon="menu" drawer-toggle></paper-icon-button>
+            <div class="logo" main-title><a href="/" aria-label="For Kinder Home">For Kinder</a></div>
+          </app-toolbar>
+        </app-header>
+        <iron-pages
+          selected="[[page]]"
+          attr-for-selected="name"
+          fallback-selection="not-found"
+          role="main">
+          <admiral-onboard name="onboard"></admiral-onboard>
+          <admiral-not-found name="not-found"></admiral-not-found>
+        </iron-pages>
+      </app-header-layout>
+    </app-drawer-layout>
 
   </template>
 
@@ -99,6 +160,10 @@
         if (this.page !== 'not-found') {
           this.set('page', 'not-found');
         }
+      },
+
+      _toggleDrawer: function () {
+        this.drawerOpened = !this.drawerOpened;
       }
 
     });
