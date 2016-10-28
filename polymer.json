@@ -3,9 +3,10 @@
   "shell": "src/admiral-app.html",
   "fragments": [
     "src/admiral-checkout-donation.html",
+    "src/admiral-instant-thankyou.html",
+    "src/admiral-not-found.html",
     "src/admiral-onboard.html",
     "src/admiral-onboard-confirm.html",
-    "src/admiral-not-found.html",
     "src/lazy-resources.html"
   ],
   "sourceGlobs": [

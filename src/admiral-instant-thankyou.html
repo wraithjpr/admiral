@@ -1,0 +1,31 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="admiral-instant-thankyou">
+  <template>
+    <style include="shared-styles">
+      :host {
+        background-color: var(--app-background-color);
+        color: var(--app-text-color);
+      }
+    </style>
+
+    <div>
+      <p>Thank you for creating a better world today.</p>
+    </div>
+    <div>
+      [Relevant photo or image goes here]
+    </div>
+    <div>
+      <p>Our friends that you are helping will post more feedback soon.</p>
+    </div>
+  </template>
+
+  <script>
+    'use strict';
+
+    Polymer({
+      is: 'admiral-instant-thankyou'
+    });
+  </script>
+</dom-module>
