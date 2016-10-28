@@ -1,0 +1,38 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="admiral-onboard-confirm">
+  <template>
+    <style include="shared-styles">
+      :host {
+        background-color: var(--app-background-color);
+        color: var(--app-text-color);
+      }
+    </style>
+
+    <h2>Getting Started</h2>
+    <div>
+      <p>Thank you for starting to make a better world. You have chosen:</p>
+    </div>
+    <ul>
+      <li>To be like Bob.</li>
+      <li>To donate to Save the Children.</li>
+    </ul>
+    <div>
+      <p>Let us say thanks by posting to:</p>
+      <div>Instagram your dashboard</div>
+      <div>Feedback from beneficiaries</div>
+      <div>Confirm</div>
+      <div>Create your account</div>
+      <div>Log in with Instagram</div>
+    </div>
+  </template>
+
+  <script>
+    'use strict';
+
+    Polymer({
+      is: 'admiral-onboard-confirm'
+    });
+  </script>
+</dom-module>

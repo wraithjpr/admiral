@@ -71,6 +71,7 @@
       <app-drawer opened="{{drawerOpened}}" swipe-open tabindex="0">
         <iron-selector class="drawer-list" selected="[[page]]" attr-for-selected="name" role="navigation">
           <a name="onboard" href="/onboard">Getting Started</a>
+          <a name="onboard-confirm" href="/onboard-confirm">Confirm Account</a>
         </iron-selector>
       </app-drawer>
       <app-header-layout has-scrolling-region>
@@ -86,6 +87,7 @@
           fallback-selection="not-found"
           role="main">
           <admiral-onboard name="onboard"></admiral-onboard>
+          <admiral-onboard-confirm name="onboard-confirm"></admiral-onboard-confirm>
           <admiral-not-found name="not-found"></admiral-not-found>
         </iron-pages>
       </app-header-layout>
