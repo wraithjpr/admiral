@@ -1,0 +1,48 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="admiral-checkout-donation">
+  <template>
+    <style include="shared-styles">
+      :host {
+        background-color: var(--app-background-color);
+        color: var(--app-text-color);
+      }
+    </style>
+
+    <h2>Checkout Donation</h2>
+    <div>
+      <p>Hi, tough call today but you can still make a better world.</p>
+      <p>Donate a little:</p>
+    </div>
+    <ul>
+      <li>Save the Children</li>
+      <li>Gambia tree planting</li>
+      <li>Not today, thanks</li>
+    </ul>
+    <div>
+      <p>Thanks, a good choice for a better world. Want to do a little more?...</p>
+      <ul>
+        <li>Repeat donation box</li>
+      </ul>
+    </div>
+    <div>
+      <p>Thanks for making a better world.</p>
+      <ul>
+        <li>Purchase £100.00</li>
+        <li>Purchase £150.00</li>
+        <li>Purchase £50.00</li>
+        <li>Donation £6.00</li>
+        <li>Amount to pay £306.00</li>
+      </ul>
+    </div>
+  </template>
+
+  <script>
+    'use strict';
+
+    Polymer({
+      is: 'admiral-checkout-donation'
+    });
+  </script>
+</dom-module>
