@@ -4,6 +4,7 @@
   "fragments": [
     "src/admiral-checkout-donation.html",
     "src/admiral-instant-thankyou.html",
+    "src/admiral-logout.html",
     "src/admiral-not-found.html",
     "src/admiral-onboard.html",
     "src/admiral-onboard-confirm.html",

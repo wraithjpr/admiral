@@ -28,6 +28,21 @@
         color: var(--app-primary-text-color);
       }
 
+      app-toolbar a {
+        text-decoration: none;
+        /* required for IE 11, so this <a> can receive pointer events */
+        display: inline-block;
+        pointer-events: auto;
+      }
+
+      app-toolbar a:link,
+      app-toolbar a:visited,
+      app-toolbar a:hover,
+      app-toolbar a:focus,
+      app-toolbar a:active {
+        color: var(--app-primary-text-color);
+      }
+
       .drawer-list {
         margin: 0 20px;
       }
@@ -37,11 +52,11 @@
         padding: 0 16px;
         line-height: 40px;
         text-decoration: none;
-        color: var(--app-secondary-color);
+        color: var(--app-secondary-text-color);
       }
 
       .drawer-list a.iron-selected {
-        color: black;
+        color: var(--app-primary-color);
         font-weight: bold;
       }
 
@@ -50,13 +65,13 @@
       }
 
       .logo a {
-        font-size: 16px;
+        font-size: 20px;
         font-weight: 600;
         letter-spacing: 0.3em;
-        text-decoration: none;
-        /* required for IE 11, so this <a> can receive pointer events */
-        display: inline-block;
-        pointer-events: auto;
+      }
+
+      .right-bar-container a {
+        font-size: 14px;
       }
     </style>
 
@@ -81,6 +96,7 @@
           <app-toolbar>
             <paper-icon-button icon="menu" drawer-toggle></paper-icon-button>
             <div class="logo" main-title><a href="/" aria-label="For Kinder Home">For Kinder</a></div>
+            <div class="right-bar-container"><a href="/logout">Logout</a></div>
           </app-toolbar>
         </app-header>
         <iron-pages
@@ -92,6 +108,7 @@
           <admiral-onboard name="onboard"></admiral-onboard>
           <admiral-onboard-confirm name="onboard-confirm"></admiral-onboard-confirm>
           <admiral-instant-thankyou name="instant-thankyou"></admiral-instant-thankyou>
+          <admiral-logout name="logout"></admiral-logout>
           <admiral-not-found name="not-found"></admiral-not-found>
         </iron-pages>
       </app-header-layout>

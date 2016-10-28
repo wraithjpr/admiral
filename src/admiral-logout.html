@@ -1,7 +1,7 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="shared-styles.html">
 
-<dom-module id="admiral-not-found">
+<dom-module id="admiral-logout">
   <template>
     <style include="shared-styles">
       :host {
@@ -10,14 +10,17 @@
       }
     </style>
 
-    <div>That page view is not available. <a href="/">Head back to home.</a></div>
+    <div>
+      <p>Bye! You are now logged out of For Kinder.</p>
+      <div><a href="/">Head back to home.</a></div>
+    </div>
   </template>
 
   <script>
     'use strict';
 
     Polymer({
-      is: 'admiral-not-found'
+      is: 'admiral-logout'
     });
   </script>
 </dom-module>
